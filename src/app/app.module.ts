@@ -17,7 +17,7 @@ import { FeaturedAppModule } from './featured-app/featured-app.module';
   ],
   imports: [
     BrowserModule, // default with Angular generate app
-    AppRoutingModule,
+    AppRoutingModule, // here are my routes
     GalleryModule, // here I put modules made by me. Thanks to this, my main App knows what's inside of those feature-modules. 
     ProfessionModule,
     FeaturedAppModule
