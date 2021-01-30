@@ -8,6 +8,7 @@ import { ProfessionModule } from './profession/profession.module';
 import { HeaderComponent } from './header/header.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { FeaturedAppModule } from './featured-app/featured-app.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FeaturedAppModule } from './featured-app/featured-app.module';
     
     GalleryModule, // here I put modules made by me. Thanks to this, my main App knows what's inside of those feature-modules. 
     ProfessionModule,
-    FeaturedAppModule
+    FeaturedAppModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
