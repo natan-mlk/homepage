@@ -1,0 +1,24 @@
+.workspace {
+    height: 100%;
+}
+
+.main-menu {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &_item {
+        flex-grow: 1;
+        &--gallery {
+            background-color: rebeccapurple;
+        }
+
+        &--profession {
+            background-color: yellowgreen;
+        }
+
+        &--featured {
+            background-color: aqua;
+        }
+    }
+}

@@ -1,4 +1,19 @@
-<p>main-content works!</p>
-<a [routerLink]="['/gallery']">gallery</a><br>
+<div class="workspace">
+    <div class="main-menu">
+
+        <div [routerLink]="['/gallery']" class="main-menu_item main-menu_item--gallery">
+            gallery
+        </div>
+        <div [routerLink]="['/profession']" class="main-menu_item main-menu_item--profession">
+            profession
+        </div>
+        <div [routerLink]="['/featured']" class="main-menu_item main-menu_item--featured">
+            featured
+        </div>
+
+    </div>
+
+</div>
+<!-- <a [routerLink]="['/gallery']">gallery</a><br>
 <a [routerLink]="['/profession']">professional</a><br>
-<a [routerLink]="['/featured']">featured</a>
+<a [routerLink]="['/featured']">featured</a> -->
