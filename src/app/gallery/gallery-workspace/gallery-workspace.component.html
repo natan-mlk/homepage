@@ -1,9 +1,15 @@
 <div>
-    <span>gallery-workspace works!</span>
-    <div (click)="open(0)">
+    <!-- <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile (click)="open(0)"><img  src="http://placeimg.com/140/80/nature"></mat-grid-tile>
+        <mat-grid-tile (click)="open(1)"><img  src="http://placeimg.com/140/80/animals"></mat-grid-tile>
+        <mat-grid-tile (click)="open(0)"><img  src="http://placeimg.com/140/80/animals"></mat-grid-tile>
+        <mat-grid-tile (click)="open(1)"><img  src="http://placeimg.com/140/80/nature"></mat-grid-tile>
+      </mat-grid-list> -->
+
+    <div (click)="openDialog()">
         <img  src="http://placeimg.com/140/80/nature">
     </div>
-    <div (click)="open(1)">
+    <div (click)="openDialog()">
         <img  src="http://placeimg.com/140/80/animals">
     </div>
 </div>

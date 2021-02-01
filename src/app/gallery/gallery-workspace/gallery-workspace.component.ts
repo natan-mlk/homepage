@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IAlbum, Lightbox, LightboxConfig } from 'ngx-lightbox';
+import { MatDialog } from '@angular/material/dialog';
+import { GalleryDialogComponent } from '../gallery-dialog/gallery-dialog.component';
+
 
 @Component({
   selector: 'app-gallery-workspace',
@@ -8,12 +10,12 @@ import { IAlbum, Lightbox, LightboxConfig } from 'ngx-lightbox';
 })
 export class GalleryWorkspaceComponent implements OnInit {
 
-  private album: Array<IAlbum> = [];
+  private album: Array<any> = []; // zmień typ Any
 
   constructor(
-    private lightbox: Lightbox,
-    private lightboxConfig: LightboxConfig) {
-    lightboxConfig.centerVertically = true;
+    public dialog: MatDialog,
+    ) {
+
     this.album.push(
       {
         src: 'http://placeimg.com/640/480/nature',
@@ -31,15 +33,19 @@ export class GalleryWorkspaceComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  open(index: number): void {
-    // open lightbox
-    this.lightbox.open(this.album, index);
-  }
- 
-  close(): void {
-    // close lightbox programmatically
-    this.lightbox.close();
-  }
 
+  // GalleryDialogComponent
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(GalleryDialogComponent, {
+      width: 'auto',
+      data: {album: this.album} // jakiś index obrazka?
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
+  }
 
 }
