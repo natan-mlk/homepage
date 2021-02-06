@@ -12,7 +12,7 @@ export class DatabaseRequestService {
 
   constructor(private http: HttpClient) { }
 
-  getAlbum(urlPart: string): Observable<any> { // zmień z ANY
+  getData(urlPart: string): Observable<any> { // zmień z ANY
     return this.http.get(databaseAddr + urlPart);
   }
 

@@ -1,25 +1,25 @@
 {
   "album": [
     {
-      "src": "http://placeimg.com/640/480/arch",
+      "src": "http://placeimg.com/1200/800/arch",
       "caption": "arch",
       "thumb": "http://placeimg.com/140/80/arch",
       "index": 0
     },
     {
-      "src": "http://placeimg.com/640/480/animals",
+      "src": "http://placeimg.com/1200/800/animals",
       "caption": "animals",
       "thumb": "http://placeimg.com/140/80/animals",
       "index": 1
     },
     {
-      "src": "http://placeimg.com/640/480/nature",
+      "src": "http://placeimg.com/1200/800/nature",
       "caption": "nature",
       "thumb": "http://placeimg.com/140/80/nature",
       "index": 2
     },
     {
-      "src": "http://placeimg.com/640/480/animals",
+      "src": "http://placeimg.com/1200/800/animals",
       "caption": "animals",
       "thumb": "http://placeimg.com/140/80/animals",
       "index": 3

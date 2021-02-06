@@ -24,7 +24,7 @@ export class GalleryWorkspaceComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.databaseRequestService.getAlbum('album.json').subscribe(
+    this.databaseRequestService.getData('album.json').subscribe(
       (data: Array<AlbumData>) => {
         console.log('REQUEST', data);
         this.album = data;
@@ -35,7 +35,9 @@ export class GalleryWorkspaceComponent implements OnInit {
   openDialog(idx: number): void {
     const dialogRef = this.dialog.open(GalleryDialogComponent, {
       width: 'auto',
-      data: {album: this.album, index: idx}
+      data: {album: this.album, index: idx},
+      panelClass: 'gallery-dialog',
+      maxWidth: '90vw'
     });
 
     dialogRef.afterClosed().subscribe(result => {
