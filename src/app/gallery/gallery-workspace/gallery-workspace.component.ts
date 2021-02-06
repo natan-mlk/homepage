@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { GalleryDialogComponent } from '../gallery-dialog/gallery-dialog.component';
 
+interface AlbumData {
+  src: string;
+  caption: string;
+  thumb: string;
+  index: number;
+}
 
 @Component({
   selector: 'app-gallery-workspace',
@@ -10,7 +16,7 @@ import { GalleryDialogComponent } from '../gallery-dialog/gallery-dialog.compone
 })
 export class GalleryWorkspaceComponent implements OnInit {
 
-  private album: Array<any> = []; // zmień typ Any
+  public album: Array<AlbumData> = [];
 
   constructor(
     public dialog: MatDialog,
@@ -18,33 +24,43 @@ export class GalleryWorkspaceComponent implements OnInit {
 
     this.album.push(
       {
-        src: 'http://placeimg.com/640/480/nature',
-         caption: 'nature',
-         thumb: 'http://placeimg.com/140/80/nature'
+        src: 'http://placeimg.com/640/480/arch',
+         caption: 'arch',
+         thumb: 'http://placeimg.com/140/80/arch',
+         index: 0
       },
       {
         src: 'http://placeimg.com/640/480/animals',
          caption: 'animals',
-         thumb: 'http://placeimg.com/140/80/animals'
+         thumb: 'http://placeimg.com/140/80/animals',
+         index: 1
       },
-    )
+      {
+        src: 'http://placeimg.com/640/480/nature',
+         caption: 'nature',
+         thumb: 'http://placeimg.com/140/80/nature',
+         index: 2
+      },
+      {
+        src: 'http://placeimg.com/640/480/animals',
+         caption: 'animals',
+         thumb: 'http://placeimg.com/140/80/animals',
+         index: 3
+      },
+    );
   }
 
   ngOnInit(): void {
   }
 
-
-  // GalleryDialogComponent
-
-  openDialog(): void {
+  openDialog(idx: any): void {
     const dialogRef = this.dialog.open(GalleryDialogComponent, {
       width: 'auto',
-      data: {album: this.album} // jakiś index obrazka?
+      data: {album: this.album, index: idx}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      // this.animal = result;
     });
   }
 
