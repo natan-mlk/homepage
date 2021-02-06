@@ -1,0 +1,42 @@
+{
+  "album": [
+    {
+      "src": "http://placeimg.com/640/480/arch",
+      "caption": "arch",
+      "thumb": "http://placeimg.com/140/80/arch",
+      "index": 0
+    },
+    {
+      "src": "http://placeimg.com/640/480/animals",
+      "caption": "animals",
+      "thumb": "http://placeimg.com/140/80/animals",
+      "index": 1
+    },
+    {
+      "src": "http://placeimg.com/640/480/nature",
+      "caption": "nature",
+      "thumb": "http://placeimg.com/140/80/nature",
+      "index": 2
+    },
+    {
+      "src": "http://placeimg.com/640/480/animals",
+      "caption": "animals",
+      "thumb": "http://placeimg.com/140/80/animals",
+      "index": 3
+    }
+  ],
+  "featuredApp": {
+    "appName": "test",
+    "author": "natan",
+    "users": [
+      {
+        "id": 1234,
+        "name": "testName"
+      },
+      {
+        "id": 456,
+        "name": "testName2"
+      }
+    ]
+  }
+}

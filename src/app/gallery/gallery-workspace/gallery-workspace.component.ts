@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { DatabaseRequestService } from 'src/app/services/database-request.service';
 import { GalleryDialogComponent } from '../gallery-dialog/gallery-dialog.component';
 
 interface AlbumData {
@@ -8,7 +9,6 @@ interface AlbumData {
   thumb: string;
   index: number;
 }
-
 @Component({
   selector: 'app-gallery-workspace',
   templateUrl: './gallery-workspace.component.html',
@@ -20,40 +20,19 @@ export class GalleryWorkspaceComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    ) {
+    private databaseRequestService: DatabaseRequestService
+    ) { }
 
-    this.album.push(
-      {
-        src: 'http://placeimg.com/640/480/arch',
-         caption: 'arch',
-         thumb: 'http://placeimg.com/140/80/arch',
-         index: 0
-      },
-      {
-        src: 'http://placeimg.com/640/480/animals',
-         caption: 'animals',
-         thumb: 'http://placeimg.com/140/80/animals',
-         index: 1
-      },
-      {
-        src: 'http://placeimg.com/640/480/nature',
-         caption: 'nature',
-         thumb: 'http://placeimg.com/140/80/nature',
-         index: 2
-      },
-      {
-        src: 'http://placeimg.com/640/480/animals',
-         caption: 'animals',
-         thumb: 'http://placeimg.com/140/80/animals',
-         index: 3
-      },
+  ngOnInit(): void {
+    this.databaseRequestService.getAlbum('album.json').subscribe(
+      (data: Array<AlbumData>) => {
+        console.log('REQUEST', data);
+        this.album = data;
+      }
     );
   }
 
-  ngOnInit(): void {
-  }
-
-  openDialog(idx: any): void {
+  openDialog(idx: number): void {
     const dialogRef = this.dialog.open(GalleryDialogComponent, {
       width: 'auto',
       data: {album: this.album, index: idx}

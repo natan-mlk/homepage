@@ -1,11 +1,4 @@
 <div>
-    <!-- <mat-grid-list cols="2" rowHeight="2:1">
-        <mat-grid-tile (click)="open(0)"><img  src="http://placeimg.com/140/80/nature"></mat-grid-tile>
-        <mat-grid-tile (click)="open(1)"><img  src="http://placeimg.com/140/80/animals"></mat-grid-tile>
-        <mat-grid-tile (click)="open(0)"><img  src="http://placeimg.com/140/80/animals"></mat-grid-tile>
-        <mat-grid-tile (click)="open(1)"><img  src="http://placeimg.com/140/80/nature"></mat-grid-tile>
-      </mat-grid-list> -->
-
     <div *ngFor="let picture of album" (click)="openDialog(picture.index)">
         <img [src]="picture.thumb">
     </div>

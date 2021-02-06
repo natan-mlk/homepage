@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { FeaturedAppModule } from './featured-app/featured-app.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule, // default with Angular generate app
+    HttpClientModule,
     AppRoutingModule, // here are my routes
     
     GalleryModule, // here I put modules made by me. Thanks to this, my main App knows what's inside of those feature-modules. 
