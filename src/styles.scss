@@ -1,18 +1,28 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import './styles-assets/variables';
 
-$toolbarHeight: 70px;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  // font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Verdana, sans-serif;
+  background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
+ background-blend-mode: screen;
+}
 
 .workspace {
-    height: calc(100% - 70px);
+  height: calc(100% - 100px);
 }
 
 .toolbar {
-    height: $toolbarHeight;
-    background-color: pink;
+  height: $toolbarHeight;
+  background-color: #004C66;
 }
-
 
 // material override - create seperate partial
 

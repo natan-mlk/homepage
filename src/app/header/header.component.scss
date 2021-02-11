@@ -1,0 +1,16 @@
+@import '@stylesAssets/_variables.scss';
+
+a {
+    text-decoration: none;
+}
+.header {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: $headerFontColor;
+
+    &_logo-container {
+        letter-spacing: 10px;
+        
+    }
+}
