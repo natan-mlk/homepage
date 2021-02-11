@@ -1,16 +1,33 @@
-@import '@stylesAssets/_variables.scss';
+@import "styles-assets/variables.scss";
 
-a {
-    text-decoration: none;
-}
 .header {
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     color: $headerFontColor;
+    font-size: $headerFontSize;
+
+    a {
+        text-decoration: none;
+        color: $headerFontColor;
+    }
 
     &_logo-container {
         letter-spacing: 10px;
-        
+
+        &--narrow-letters {
+            letter-spacing: 8px;
+        }
     }
+
+    &_buttons-container {
+
+    }
+}
+
+.github-button {
+    border: 1px solid $headerFontColor;
+    border-radius: 2px;
+    padding: 10px 20px;
 }
