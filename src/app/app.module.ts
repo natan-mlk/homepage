@@ -11,12 +11,14 @@ import { FeaturedAppModule } from './featured-app/featured-app.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import {MatRippleModule} from '@angular/material/core';
+import { MainContentItemComponent } from './main-content/main-content-item/main-content-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    MainContentComponent
+    MainContentComponent,
+    MainContentItemComponent
   ],
   imports: [
     BrowserModule, // default with Angular generate app

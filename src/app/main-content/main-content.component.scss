@@ -1,24 +1,61 @@
+@import "./styles-assets/variables";
+
 .workspace {
     height: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .main-menu {
     height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     &_item {
         flex-grow: 1;
+        border: 1px solid $mainContentThemeColor;
+        color: $mainContentThemeColor;
+        border-radius: 4px;
+        margin: 10px 20px;
+        width: 100%;
+        cursor: pointer;
+        font-size: 1.2rem;
+        box-shadow: -2px 1px 3px 0px rgba(0, 0, 0, 0.15);
+        transition: all ease-in-out 0.3s;
+        @include centerContent;
+
+        &:hover {
+            box-shadow: -2px 1px 3px 0px rgba(0, 0, 0, 0.3);
+        }
+
+        p {
+            text-align: center;
+            line-height: 1.5rem;
+            letter-spacing: 4px;
+        }
+
         &--gallery {
-            background-color: rebeccapurple;
         }
 
         &--profession {
-            background-color: yellowgreen;
         }
 
         &--featured {
-            background-color: aqua;
+        }
+    }
+}
+
+@media (min-width: $desktopBreakpoint) {
+    .main-menu {
+        &_item {
+            margin: 30px 20px;
+            font-size: 1.5rem;
+            // width: 600px;
+            p {
+                line-height: 2rem;
+                letter-spacing: 6px;
+            }
         }
     }
 }

@@ -1,4 +1,15 @@
-$toolbarHeight: 100px;
+$desktopBreakpoint: 650px;
 
-$headerFontColor: #DDDDDD;
+$toolbarHeight: 100px;
+$toolbarHeightMobile: 50px;
+
+$headerFontColor: #dddddd;
 $headerFontSize: 1rem;
+
+$mainContentThemeColor: #868695;
+
+@mixin centerContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

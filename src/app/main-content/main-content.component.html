@@ -1,19 +1,27 @@
-<div class="workspace">
+<div class="workspace container">
     <div class="main-menu">
 
-        <div [routerLink]="['/gallery']" class="main-menu_item main-menu_item--gallery">
-            gallery
-        </div>
-        <div [routerLink]="['/profession']" class="main-menu_item main-menu_item--profession">
-            profession
-        </div>
-        <div [routerLink]="['/featured']" class="main-menu_item main-menu_item--featured">
-            featured
-        </div>
+        <app-main-content-item [routerLink]="['/gallery']" class="main-menu_item main-menu_item--gallery">
+            <p>
+                hobby<br>
+                painting<br>
+                gallery<br>
+            </p>
+        </app-main-content-item>
+        <app-main-content-item [routerLink]="['/profession']" class="main-menu_item main-menu_item--profession">
+            <p>
+                CV<br>
+                profession<br>
+            </p>
+        </app-main-content-item>
+        <app-main-content-item [routerLink]="['/featured']" class="main-menu_item main-menu_item--featured">
+            <p>
+                my app<br>
+                featured<br>
+                coding<br>
+            </p>
+        </app-main-content-item>
 
     </div>
 
 </div>
-<!-- <a [routerLink]="['/gallery']">gallery</a><br>
-<a [routerLink]="['/profession']">professional</a><br>
-<a [routerLink]="['/featured']">featured</a> -->

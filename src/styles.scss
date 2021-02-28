@@ -1,7 +1,5 @@
-@import '~bootstrap/dist/css/bootstrap.min.css';
-@import './styles-assets/variables';
-
-
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "./styles-assets/variables";
 
 html,
 body {
@@ -15,16 +13,26 @@ body {
 }
 
 .workspace {
-  height: calc(100% - 100px);
+  height: calc(100% - 70px);
 }
 
 .toolbar {
-  height: $toolbarHeight;
-  background-color: #004C66;
+  height: $toolbarHeightMobile;
+  background-color: #004c66;
 }
 
 // material override - create seperate partial
 
 .gallery-dialog .mat-dialog-container {
   padding: 0;
+}
+
+@media (min-width: $desktopBreakpoint) {
+  .workspace {
+    height: calc(100% - 100px);
+  }
+
+  .toolbar {
+    height: $toolbarHeight;
+  }
 }
