@@ -5,6 +5,7 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
+    "strictPropertyInitialization": false, // turn of some TS.4 errors
     "strict": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,

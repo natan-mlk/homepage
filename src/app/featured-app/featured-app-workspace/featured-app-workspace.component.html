@@ -1,5 +1,13 @@
 <div class="workspace container">
-    <p>featured-app-workspace works!</p>
+    <h1>{{characterData.name}}</h1>
+    <h3>Ma: {{characterData.money | GoldenCrownsPipe}} Koron, 
+      {{ characterData.money | SilverPipe}} Szylingów, 
+      {{ characterData.money | PennyPipe}} Pensów
+    </h3>
+    <h3>history:</h3>
+    <p *ngFor="let history of characterData.history">
+      <span>{{history.value}} - </span><span>{{history.note}}</span>
+    </p>
 
     <form [formGroup]="testFormGroup">
         <mat-form-field>
@@ -8,7 +16,13 @@
           formControlName="moneyValue" 
           placeholder="your money">
         </mat-form-field>
+        <mat-form-field>
+          <mat-label>Note</mat-label>
+          <input type="text" matInput
+          formControlName="note" 
+          placeholder="note something">
+        </mat-form-field>
       </form>
-      <button mat-raised-button color="primary" (click)="update()"> SEND and UPDATE</button>
+      <button mat-raised-button color="primary" (click)="update()">SEND and UPDATE</button>
       <p>{{testFormGroup.value}}</p>
 </div>

@@ -5,10 +5,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GoldenCrownsPipe, PennyPipe, SilverPipe } from './assets/pipes';
 
 
 @NgModule({
-  declarations: [FeaturedAppWorkspaceComponent],
+  declarations: [
+    FeaturedAppWorkspaceComponent,
+    GoldenCrownsPipe,
+    SilverPipe,
+    PennyPipe
+  ],
   imports: [
     CommonModule,
     MatFormFieldModule,

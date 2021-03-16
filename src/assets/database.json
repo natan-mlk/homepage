@@ -28,7 +28,12 @@
   "featuredApp": {
     "characters" : {
       "ermin" : {
-        "money" : 123
+        "name": "Ermin o'Mill",
+        "money" : 123,
+        "history": [
+          {"value": 234, "note": "za dziwki"},
+          {"value": 321, "note": "za koks"}
+        ]
       },
       "lokkri" : {
         "money" : 123
