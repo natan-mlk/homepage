@@ -1,1 +1,14 @@
-<p>featured-app-workspace works!</p>
+<div class="workspace container">
+    <p>featured-app-workspace works!</p>
+
+    <form [formGroup]="testFormGroup">
+        <mat-form-field>
+          <mat-label>How much money</mat-label>
+          <input type="number" matInput
+          formControlName="moneyValue" 
+          placeholder="your money">
+        </mat-form-field>
+      </form>
+      <button mat-raised-button color="primary" (click)="update()"> SEND and UPDATE</button>
+      <p>{{testFormGroup.value}}</p>
+</div>
