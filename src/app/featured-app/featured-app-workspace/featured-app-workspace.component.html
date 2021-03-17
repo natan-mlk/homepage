@@ -10,19 +10,34 @@
     </p>
 
     <form [formGroup]="testFormGroup">
-        <mat-form-field>
-          <mat-label>How much money</mat-label>
+        <mat-form-field appearance="outline">
+          <mat-label>Korony</mat-label>
           <input type="number" matInput
-          formControlName="moneyValue" 
-          placeholder="your money">
+          formControlName="goldValue" 
+          placeholder="korony">
         </mat-form-field>
-        <mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Szylingi</mat-label>
+          <input type="number" matInput
+          formControlName="silverValue" 
+          placeholder="szylingi">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Pensy</mat-label>
+          <input type="number" matInput
+          formControlName="pennyValue" 
+          placeholder="pensy">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
           <mat-label>Note</mat-label>
-          <input type="text" matInput
+          <textarea matInput
           formControlName="note" 
-          placeholder="note something">
+          placeholder="notatka"></textarea>
         </mat-form-field>
+
       </form>
       <button mat-raised-button color="primary" (click)="update()">SEND and UPDATE</button>
-      <p>{{testFormGroup.value}}</p>
 </div>

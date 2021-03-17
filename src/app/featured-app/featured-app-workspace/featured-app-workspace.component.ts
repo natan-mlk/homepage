@@ -22,7 +22,9 @@ export class FeaturedAppWorkspaceComponent implements OnInit {
   moneyAmount: number = 0;
 
   testFormGroup = new FormGroup({
-    moneyValue: new FormControl(), // nie chwyta mi wartości z formularza
+    goldValue: new FormControl(),
+    silverValue: new FormControl(), 
+    pennyValue: new FormControl(),
     note: new FormControl(),
   })
   
@@ -36,22 +38,28 @@ export class FeaturedAppWorkspaceComponent implements OnInit {
         console.log('new data', data);
         this.characterData = data;
         this.moneyAmount = data.money;
-        // var zk = Math.floor((newAmount / 12) / 20),
-        // sz = Math.floor((newAmount / 12) - (zk * 20)),
-        // pens = newAmount - ((Math.floor((newAmount / 12))) * 12);
       }
     )
   }
  
   update(){
-    this.characterData.history.push({'note': this.testFormGroup.value.note, 'value': this.testFormGroup.value.moneyValue})
+    const formValue = this.testFormGroup.value;
+    const inputMoney = (formValue.goldValue * 20 * 12) + (formValue.silverValue * 12) + formValue.pennyValue;
+    // sprawdź czy jest mniej niż 10 pozycji. Jeśli tak, to wepchnij i wyślij
+    if(this.characterData.history.length < 10){
+      this.characterData.history.unshift({'note': this.testFormGroup.value.note, 'value': inputMoney})
+    } else {
+      this.characterData.history.pop();
+      this.characterData.history.unshift({'note': this.testFormGroup.value.note, 'value': inputMoney})
+    }
+    this.characterData.money = inputMoney;
     console.log('form val',this.testFormGroup.value.moneyValue)
     console.log('newHistory',this.characterData.history)
-    if (!!this.testFormGroup.value.moneyValue){
+
       this.http.patch(
         this.databaseAddr + 'featuredApp/characters/ermin/.json', 
         {
-          "money" : this.testFormGroup.value.moneyValue,
+          "money" : inputMoney,
           "history": this.characterData.history
       }
       ).subscribe(
@@ -59,9 +67,6 @@ export class FeaturedAppWorkspaceComponent implements OnInit {
           console.log('received ok response from patch request');
         }
       )
-    } else {
-      console.error("!!!!!!!!!!");
-    }
   }
 
 }
