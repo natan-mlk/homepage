@@ -8,11 +8,20 @@ interface CharacterData {
   history: {value: number, note?: string}[]
 }
 
+interface FormValue {
+  goldValue: number,
+  note: string,
+  pennyValue: number,
+  silverValue: number
+}
+
 @Component({
   selector: 'app-featured-app-workspace',
   templateUrl: './featured-app-workspace.component.html',
   styleUrls: ['./featured-app-workspace.component.scss']
 })
+
+
 export class FeaturedAppWorkspaceComponent implements OnInit {
 
   databaseAddr = 'https://amilko-home-default-rtdb.europe-west1.firebasedatabase.app/';
@@ -43,18 +52,15 @@ export class FeaturedAppWorkspaceComponent implements OnInit {
   }
  
   update(){
-    const formValue = this.testFormGroup.value;
+    const formValue: FormValue = this.testFormGroup.value;
     const inputMoney = (formValue.goldValue * 20 * 12) + (formValue.silverValue * 12) + formValue.pennyValue;
-    // sprawdź czy jest mniej niż 10 pozycji. Jeśli tak, to wepchnij i wyślij
-    if(this.characterData.history.length < 10){
-      this.characterData.history.unshift({'note': this.testFormGroup.value.note, 'value': inputMoney})
-    } else {
-      this.characterData.history.pop();
-      this.characterData.history.unshift({'note': this.testFormGroup.value.note, 'value': inputMoney})
-    }
+    
+    this.createMoneyHistory(formValue, inputMoney);
+
     this.characterData.money = inputMoney;
-    console.log('form val',this.testFormGroup.value.moneyValue)
-    console.log('newHistory',this.characterData.history)
+    console.log('form val', formValue)
+    // console.log('form val', formValue.moneyValue)
+    // console.log('newHistory',this.characterData.history)
 
       this.http.patch(
         this.databaseAddr + 'featuredApp/characters/ermin/.json', 
@@ -67,6 +73,15 @@ export class FeaturedAppWorkspaceComponent implements OnInit {
           console.log('received ok response from patch request');
         }
       )
+  }
+
+  private createMoneyHistory(formValue: FormValue, inputMoney: number){
+    if(this.characterData.history.length < 10){
+      this.characterData.history.unshift({'note': formValue.note, 'value': inputMoney})
+    } else {
+      this.characterData.history.pop();
+      this.characterData.history.unshift({'note': formValue.note, 'value': inputMoney})
+    }
   }
 
 }
