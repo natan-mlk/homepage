@@ -17,14 +17,13 @@ interface FormValue {
 }
 
 @Component({
-  selector: 'app-featured-app-workspace',
-  templateUrl: './featured-app-workspace.component.html',
-  styleUrls: ['./featured-app-workspace.component.scss']
+  selector: 'app-character-card',
+  templateUrl: './character-card.component.html',
+  styleUrls: ['./character-card.component.scss']
 })
+export class CharacterCardComponent implements OnInit {
 
-
-export class FeaturedAppWorkspaceComponent implements OnInit {
-
+  selectedCharacter: string;
   databaseAddr = 'https://amilko-home-default-rtdb.europe-west1.firebasedatabase.app/';
   // https://amilko-home-default-rtdb.europe-west1.firebasedatabase.app/featuredApp/characters/ermin/.json
   
@@ -37,14 +36,26 @@ export class FeaturedAppWorkspaceComponent implements OnInit {
     pennyValue: new FormControl(),
     note: new FormControl(),
   })
-  
-  constructor(
-    private http: HttpClient,
 
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
   ) { }
 
   ngOnInit(): void {
-    this.http.get('https://amilko-home-default-rtdb.europe-west1.firebasedatabase.app/featuredApp/characters/ermin.json').subscribe(
+    this.selectedCharacter  = this.route.snapshot.params['name']
+    // powinienem się subskrybować zamiast korzystać ze snapshota, bo mi się ten kompontnt nie przerenderowuje
+    // o tak
+    // this.paramsSubscription = this.route.params
+    // .subscribe(
+    //   (params: Params) => {
+    //     this.user.id = params['id'];
+    //     this.user.name = params['name'];
+    //   }
+    // );
+    this.http.get('https://amilko-home-default-rtdb.europe-west1.firebasedatabase.app/featuredApp/characters/' 
+    + this.selectedCharacter + '.json')
+    .subscribe(
       (data: CharacterData | any) => {
         console.log('new data', data);
         this.characterData = data;
@@ -52,7 +63,7 @@ export class FeaturedAppWorkspaceComponent implements OnInit {
       }
     )
   }
- 
+
   update(){
     const formValue: FormValue = this.testFormGroup.value;
     const inputMoney = (formValue.goldValue * 20 * 12) + (formValue.silverValue * 12) + formValue.pennyValue;
@@ -65,7 +76,7 @@ export class FeaturedAppWorkspaceComponent implements OnInit {
     // console.log('newHistory',this.characterData.history)
 
       this.http.patch(
-        this.databaseAddr + 'featuredApp/characters/ermin/.json', 
+        this.databaseAddr + 'featuredApp/characters/' + this.selectedCharacter + '/.json', 
         {
           "money" : inputMoney,
           "history": this.characterData.history

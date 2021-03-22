@@ -1,43 +1,8 @@
 <div class="workspace container">
-    <h1>{{characterData.name}}</h1>
-    <h3>Ma: {{characterData.money | GoldenCrownsPipe}} Koron, 
-      {{ characterData.money | SilverPipe}} Szylingów, 
-      {{ characterData.money | PennyPipe}} Pensów
-    </h3>
-    <h3>history:</h3>
-    <p *ngFor="let history of characterData.history">
-      <span>{{history.value}} - </span><span>{{history.note}}</span>
-    </p>
 
-    <form [formGroup]="testFormGroup">
-        <mat-form-field appearance="outline">
-          <mat-label>Korony</mat-label>
-          <input type="number" matInput
-          formControlName="goldValue" 
-          placeholder="korony">
-        </mat-form-field>
+  <h2 [routerLink]="['/character', 'ermin']">Ermin</h2>
+  <h2 [routerLink]="['/character','lokkri']">lokkri</h2>
+  <h2 [routerLink]="['/character','verbena']">verbena</h2>
+  <h2 [routerLink]="['/character','gustav']">gustav</h2>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Szylingi</mat-label>
-          <input type="number" matInput
-          formControlName="silverValue" 
-          placeholder="szylingi">
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Pensy</mat-label>
-          <input type="number" matInput
-          formControlName="pennyValue" 
-          placeholder="pensy">
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Note</mat-label>
-          <textarea matInput
-          formControlName="note" 
-          placeholder="notatka"></textarea>
-        </mat-form-field>
-
-      </form>
-      <button mat-raised-button color="primary" (click)="update()">SEND and UPDATE</button>
 </div>

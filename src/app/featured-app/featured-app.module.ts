@@ -6,6 +6,9 @@ import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GoldenCrownsPipe, PennyPipe, SilverPipe } from './assets/pipes';
+import { FeaturedAppRoutingModule } from './featured-app-routing.module';
+import { CharacterCardComponent } from './character-card/character-card.component';
+import { ChooseCharacterComponent } from './choose-character/choose-character.component';
 
 
 @NgModule({
@@ -13,14 +16,18 @@ import { GoldenCrownsPipe, PennyPipe, SilverPipe } from './assets/pipes';
     FeaturedAppWorkspaceComponent,
     GoldenCrownsPipe,
     SilverPipe,
-    PennyPipe
+    PennyPipe,
+    CharacterCardComponent,
+    ChooseCharacterComponent
   ],
   imports: [
     CommonModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FeaturedAppRoutingModule, // here are my routes
+
   ]
 })
 export class FeaturedAppModule { }
