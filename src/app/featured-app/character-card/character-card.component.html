@@ -9,7 +9,7 @@
     <h3>history:</h3>
     <ng-container *ngIf="characterData.history">
         <p *ngFor="let history of characterData.history">
-          <span>{{history.value}} - </span><span>{{history.note}}</span>
+          <span [ngStyle]="history.type ? {'color': 'black'} : {'color': 'red'}">{{history.value}} : {{history.note}}</span>
         </p>
     </ng-container>
 
@@ -43,6 +43,7 @@
         </mat-form-field>
 
       </form>
-      <button mat-raised-button color="primary" (click)="update()">SEND and UPDATE</button>
+      <button mat-raised-button color="primary" (click)="update(true)">DODAJ</button>
+      <button mat-raised-button color="accent" (click)="update(false)">WYDAJ</button>
 
     </div>

@@ -6,7 +6,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 interface CharacterData {
   name: string,
   money : number,
-  history: {value: number, note?: string}[]
+  history: {
+    value: number,
+    type: boolean, 
+    note?: string
+  }[]
 }
 
 interface FormValue {
@@ -59,42 +63,54 @@ export class CharacterCardComponent implements OnInit {
       (data: CharacterData | any) => {
         console.log('new data', data);
         this.characterData = data;
-        this.moneyAmount = data.money;
+        // this.moneyAmount = data.money;
       }
     )
   }
 
-  update(){
+  update(operationType: boolean){
     const formValue: FormValue = this.testFormGroup.value;
     const inputMoney = (formValue.goldValue * 20 * 12) + (formValue.silverValue * 12) + formValue.pennyValue;
     
-    this.createMoneyHistory(formValue, inputMoney);
+    this.createMoneyHistory(formValue, inputMoney, operationType);
+    let newMoneyAmount = 0;
 
-    this.characterData.money = inputMoney;
-    console.log('form val', formValue)
-    // console.log('form val', formValue.moneyValue)
-    // console.log('newHistory',this.characterData.history)
+    if (operationType){
+    newMoneyAmount = this.characterData.money + inputMoney;
+    } else {
+      newMoneyAmount = this.characterData.money - inputMoney;
+    }
 
-      this.http.patch(
-        this.databaseAddr + 'featuredApp/characters/' + this.selectedCharacter + '/.json', 
-        {
-          "money" : inputMoney,
-          "history": this.characterData.history
-      }
-      ).subscribe(
-        res => {
-          console.log('received ok response from patch request');
-        }
-      )
+    this.characterData.money = newMoneyAmount;
+    this.sendToDataBase(newMoneyAmount);
   }
 
-  private createMoneyHistory(formValue: FormValue, inputMoney: number){
+  private createMoneyHistory(formValue: FormValue, inputMoney: number, operationType: boolean){
+    const characterHistoryObj = {
+      'note': formValue.note, 
+      'value': operationType ? inputMoney : -inputMoney, 
+      'type': operationType
+    };
     if(this.characterData.history.length < 10){
-      this.characterData.history.unshift({'note': formValue.note, 'value': inputMoney})
+      this.characterData.history.unshift(characterHistoryObj)
     } else {
       this.characterData.history.pop();
-      this.characterData.history.unshift({'note': formValue.note, 'value': inputMoney})
+      this.characterData.history.unshift(characterHistoryObj)
     }
+  }
+
+  private sendToDataBase(newMoneyAmount:number) {
+    this.http.patch(
+      this.databaseAddr + 'featuredApp/characters/' + this.selectedCharacter + '/.json', 
+      {
+        "money" : newMoneyAmount,
+        "history": this.characterData.history
+    }
+    ).subscribe(
+      res => {
+        console.log('received ok response from patch request');
+      }
+    )
   }
 
 }
