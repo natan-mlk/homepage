@@ -1,19 +1,13 @@
 <div class="workspace container">
-<h2 [routerLink]="['/featured']">go back</h2>
+<!-- <h2 [routerLink]="['/featured']">go back</h2> -->
 
     <h1>{{characterData.name}}</h1>
-    <h3>Ma: {{characterData.money | GoldenCrownsPipe}} Koron, 
-      {{ characterData.money | SilverPipe}} Szylingów, 
-      {{ characterData.money | PennyPipe}} Pensów
+    <h3>Korony: {{characterData.money | GoldenCrownsPipe}}, 
+      Szylingi: {{ characterData.money | SilverPipe}}, 
+      Pensy: {{ characterData.money | PennyPipe}}
     </h3>
-    <h3>history:</h3>
-    <ng-container *ngIf="characterData.history">
-        <p *ngFor="let history of characterData.history">
-          <span [ngStyle]="history.type ? {'color': 'black'} : {'color': 'red'}">{{history.value}} : {{history.note}}</span>
-        </p>
-    </ng-container>
 
-    <form [formGroup]="testFormGroup">
+    <form [formGroup]="formGroup">
         <mat-form-field appearance="outline">
           <mat-label>Korony</mat-label>
           <input type="number" matInput
@@ -43,7 +37,26 @@
         </mat-form-field>
 
       </form>
-      <button mat-raised-button color="primary" (click)="update(true)">DODAJ</button>
-      <button mat-raised-button color="accent" (click)="update(false)">WYDAJ</button>
+      <button mat-fab color="primary" style="font-size: 30px;" (click)="update(true)">+</button>
+      <button mat-fab color="accent" style="font-size: 30px;" (click)="update(false)">-</button>
+
+      <!-- <h3>history:</h3>
+      <ng-container *ngIf="characterData.history">
+          <p *ngFor="let history of characterData.history">
+            <span [ngStyle]="history.type ? {'color': 'black'} : {'color': 'red'}">{{history.value}} : {{history.note}}</span>
+          </p>
+      </ng-container> -->
+
+      <mat-list>
+        <div mat-subheader>Historia</div>
+        <mat-list-item *ngFor="let history of characterData.history">
+          <mat-icon *ngIf="history.type" style="color: rgb(79, 179, 13)" mat-list-icon>attach_money</mat-icon>
+          <mat-icon *ngIf="!history.type" style="color: rgb(173, 42, 42)" mat-list-icon>attach_money</mat-icon>
+          <div mat-line>Korony: {{history.value | GoldenCrownsPipe}}, 
+            Szylingi: {{ history.value | SilverPipe}}, 
+            Pensy: {{ history.value | PennyPipe}}</div>
+          <div mat-line>Notka: {{history.note}}</div>
+        </mat-list-item>
+      </mat-list>
 
     </div>

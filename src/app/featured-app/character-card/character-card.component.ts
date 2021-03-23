@@ -34,7 +34,7 @@ export class CharacterCardComponent implements OnInit {
   characterData: CharacterData;
   moneyAmount: number = 0;
 
-  testFormGroup = new FormGroup({
+  formGroup = new FormGroup({
     goldValue: new FormControl(),
     silverValue: new FormControl(), 
     pennyValue: new FormControl(),
@@ -69,7 +69,7 @@ export class CharacterCardComponent implements OnInit {
   }
 
   update(operationType: boolean){
-    const formValue: FormValue = this.testFormGroup.value;
+    const formValue: FormValue = this.formGroup.value;
     const inputMoney = (formValue.goldValue * 20 * 12) + (formValue.silverValue * 12) + formValue.pennyValue;
     
     this.createMoneyHistory(formValue, inputMoney, operationType);
@@ -88,9 +88,10 @@ export class CharacterCardComponent implements OnInit {
   private createMoneyHistory(formValue: FormValue, inputMoney: number, operationType: boolean){
     const characterHistoryObj = {
       'note': formValue.note, 
-      'value': operationType ? inputMoney : -inputMoney, 
+      'value': operationType ? inputMoney : inputMoney, 
       'type': operationType
     };
+    console.log('characterHistoryObj money', characterHistoryObj.value)
     if(this.characterData.history.length < 10){
       this.characterData.history.unshift(characterHistoryObj)
     } else {
@@ -109,6 +110,7 @@ export class CharacterCardComponent implements OnInit {
     ).subscribe(
       res => {
         console.log('received ok response from patch request');
+        this.formGroup.reset();
       }
     )
   }

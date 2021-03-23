@@ -9,6 +9,8 @@ import { GoldenCrownsPipe, PennyPipe, SilverPipe } from './assets/pipes';
 import { FeaturedAppRoutingModule } from './featured-app-routing.module';
 import { CharacterCardComponent } from './character-card/character-card.component';
 import { ChooseCharacterComponent } from './choose-character/choose-character.component';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { ChooseCharacterComponent } from './choose-character/choose-character.co
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
+    MatListModule,
+    MatIconModule,
     FeaturedAppRoutingModule, // here are my routes
 
   ]
