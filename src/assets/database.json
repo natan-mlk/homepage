@@ -29,31 +29,30 @@
     "characters" : {
       "ermin" : {
         "name": "Ermin o'Mill",
-        "money" : 123,
+        "money" : 0,
         "history": [
-          {"value": 234, "note": "za dziwki"},
-          {"value": 321, "note": "za koks"}
+          {"value": 0, "note": "START", "type": true}
         ]
       },
       "lokkri" : {
-        "name": "Lokkri",
-        "money" : 123,
+        "name": "Lokkri Baralikson",
+        "money" : 0,
         "history": [
-          {"value": 0, "note": "start!"}
+          {"value": 0, "note": "START", "type": true}
         ]
       },
       "gustav" : {
-        "name": "Gustav",
-        "money" : 123,
+        "name": "Gustav Wolfander",
+        "money" : 0,
         "history": [
-          {"value": 0, "note": "start!"}
+          {"value": 0, "note": "START", "type": true}
         ]
       },
       "verbena" : {
-        "name": "Verbena",
-        "money" : 123,
+        "name": "Verbena Lindemann",
+        "money" : 0,
         "history": [
-          {"value": 0, "note": "start!"}
+          {"value": 0, "note": "START", "type": true}
         ]
       }
     }
